@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
+import store from "../utils/store";
 
 const Header = () => {
   const [searchQuery, setQuery] = useState("");
   const [suggestion, setSuggestion] = useState([]);
-  const [showSuggestion,setShowSuggestion]=useState(false);
+  const [showSuggestion, setShowSuggestion] = useState(false);
 
+  const dispatch = useDispatch();
+  const searchCache = useSelector((store) => store.search);
   useEffect(() => {
-    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestion(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
     // console.log(searchQuery);
 
     return () => {
@@ -23,16 +33,18 @@ const Header = () => {
     const json = await data.json();
 
     setSuggestion(json[1]);
+    dispatch(cacheResults({
+      [searchQuery]:json[1],
+    }))
 
     console.log(json[1]);
   };
 
-  const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="grid grid-flow-col p-5 m-2 shadow-lg">
+    <div className="grid grid-flow-col p-5 m-2 shadow-lg ">
       <div className="flex col-span-1">
         <img
           onClick={() => toggleMenuHandler()}
@@ -48,29 +60,33 @@ const Header = () => {
           />
         </a>
       </div>
-      <div className="col-span-10 px-10">
+      <div className="col-span-10 px-10 relative">
         <div>
           <input
             type="text"
             className=" w-1/2  px-5 border border-gray-400 p-2 rounded-l-full"
             value={searchQuery}
             onChange={(e) => setQuery(e.target.value)}
-            onFocus={()=>setShowSuggestion(true)}
-            onBlur={()=>setShowSuggestion(false)}
+            onFocus={() => setShowSuggestion(true)}
+            onBlur={() => setShowSuggestion(false)}
           />
           <button className=" border border-gray-400 p-2 rounded-r-full">
             Search
           </button>
         </div>
-       { showSuggestion && <div className="fixed bg-white py-2 px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100">
-          <ul>
-            {suggestion.map((s) => (
-              <li key={s} className="px-2 py-2 hover:bg-gray-100">
-                &#128269; {s}
-              </li>
-            ))}
-          </ul>
-        </div>}
+        {showSuggestion && (
+             
+          <div className="fixed left-[268px] right-0 top-[71px] bg-white py-2 px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100">
+            <ul>
+              {suggestion.map((s) => (
+                <li key={s} className="px-2 py-2 hover:bg-gray-100">
+                  &#128269; {s}
+                </li>
+              ))}
+            </ul>
+          
+          </div>
+        )}
       </div>
 
       <div className="col-span-1 ">
