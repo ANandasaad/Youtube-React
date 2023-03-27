@@ -1,24 +1,14 @@
 import React from "react";
 import Button from "./Button";
 
-const ButtonList = () => {
+const ButtonList = ({button}) => {
   return (
-    <div className="flex">
-      <Button name="All"/>
-      <Button name="Gaming"/>
-      <Button name="Music"/>
-      <Button name="Computer Science"/>
-      <Button name="News"/>
-      <Button  name="Comdey"/>
-      <Button  name="Lo-fi"/>
-      <Button  name="Movies"/>
-      <Button  name="Cars"/>
-        <Button  name="Gadgets"/>
-        <Button  name="Live"/>
-        <Button  name="History"/>
-        <Button  name="JavaScript"/>
-        
-        
+    <div className="border border-black overflow-y-hidden">
+
+   
+    <div className="flex items-center h-16 p-2 m-3 overflow-auto whitespace-nowrap ">
+       { button.map((btn, index)=><Button  key={index} name={btn}/>)  } 
+        </div>
         
 
 

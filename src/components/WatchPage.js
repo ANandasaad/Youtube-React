@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
 import Comments from "./Comments";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   let [searchParams] = useSearchParams();
   console.log(searchParams.get("v"));
   const dispatch = useDispatch();
-
+//comment data 
    async function getComment()
   {
      const response= await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${searchParams.get("v")}&key=AIzaSyCNUxWnmfTQkzgIKgW8KxsoFI72jCTEJfA`);
@@ -22,7 +23,8 @@ const WatchPage = () => {
     dispatch(closeMenu());
   }, []);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
+      <div className="flex">
     <div className="grid col-span-11  px-4">
       <iframe
         width="1000"
@@ -34,6 +36,10 @@ const WatchPage = () => {
         allowFullScreen
       
       ></iframe>
+    </div>
+    <div className="w-full mr-3 ">
+      <LiveChat/>
+    </div>
     </div>
     <Comments/>
     </div>
