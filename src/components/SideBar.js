@@ -8,7 +8,7 @@ const SideBar = () => {
   //Early return
   if(!isMenuOpen) return null;
   return (
-    <div className="col-span-1">
+    <div className="w-1/5">
       <MenuList/>
       </div>
   )

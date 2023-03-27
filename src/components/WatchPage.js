@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
@@ -7,14 +7,16 @@ import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   let [searchParams] = useSearchParams();
+  const [commentsData, setData]=useState([]);
   console.log(searchParams.get("v"));
   const dispatch = useDispatch();
 //comment data 
    async function getComment()
   {
-     const response= await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${searchParams.get("v")}&key=AIzaSyCNUxWnmfTQkzgIKgW8KxsoFI72jCTEJfA`);
+     const response= await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${searchParams.get("v")}&key=AIzaSyCH8rzZ6c7u49qlIcyg4JVpvunKZFKX4L8&maxResults=25`);
      const data= await response.json();
-     console.log(data);
+     
+     setData(data.items);
   }
    
 
@@ -41,7 +43,7 @@ const WatchPage = () => {
       <LiveChat/>
     </div>
     </div>
-    <Comments/>
+    <Comments data={commentsData}/>
     </div>
   );
 };

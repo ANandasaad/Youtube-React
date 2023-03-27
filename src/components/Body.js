@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 
 const Body = () => {
   return (
-    <div className="grid grid-flow-col">
+    <div className="flex">
       <SideBar />
       <Outlet/>
     </div>
