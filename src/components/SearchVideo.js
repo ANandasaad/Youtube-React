@@ -1,23 +1,30 @@
-import { wait } from '@testing-library/user-event/dist/utils';
+
 import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
+import { VIDEO_LIST } from '../utils/constants';
 import VideoList from './VideoList'
 
 const SearchVideo = () => {
   
   const [Videolist,setVideoList]= useState([]);
+  const [searchParams]= useSearchParams([]);
+  console.log(searchParams.get("q"));
   useEffect(()=>{
     getVideList();
   },[])
 
   async function getVideList()
   {
-     const response= await fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=sport&key=AIzaSyCifsxEgFS40AX84KOkEV0I_00CrkXLqXQ")
+     const response= await fetch(VIDEO_LIST);
      const data= await response.json();
-     console.log(data);
-     setVideoList(data);
+    //  console.log(data);
+    
+     setVideoList(data.items);
   }
   return (
-    <div><VideoList data={Videolist}/></div>
+    <div>
+      {Videolist.map((v,index)=><VideoList key={index} data={v}/>)}
+    </div>
   )
 }
 

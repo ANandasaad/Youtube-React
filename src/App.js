@@ -1,4 +1,4 @@
-import { lazy } from "react";
+
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
@@ -7,9 +7,11 @@ import Header from "./components/Header";
 import MainContainer from "./components/MainContainer";
 
 import WatchPage from "./components/WatchPage";
+import SearchVideo from "./components/SearchVideo";
+
 import store from "./utils/store";
 
-  // const SearchVideo =lazy(()=>import ("./components/SearchVideo"));
+ 
 const appRouter =createBrowserRouter([{
   path:"/",
   element:  <Body />,
@@ -19,13 +21,13 @@ const appRouter =createBrowserRouter([{
       element:<MainContainer/>
     }
     ,{
-      path:"watch",
-      element: <WatchPage/>,
-    }
-    // ,{
-    //   path:"searchvideo",
-    //   element:<SearchVideo/>
-    // }
+      path:"/watch",
+      element: <WatchPage/> ,
+    },
+     { path:"/search",
+        element:<SearchVideo />
+          
+     }
   ]
   
 }])

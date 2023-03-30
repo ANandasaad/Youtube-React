@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
@@ -33,9 +34,11 @@ const Header = () => {
     const json = await data.json();
 
     setSuggestion(json[1]);
-    dispatch(cacheResults({
-      [searchQuery]:json[1],
-    }))
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
 
     console.log(json[1]);
   };
@@ -75,16 +78,28 @@ const Header = () => {
           </button>
         </div>
         {showSuggestion && (
-             
           <div className="fixed left-[268px] right-0 top-[71px] bg-white py-2 px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100">
             <ul>
-              {suggestion.map((s) => (
-                <li key={s} className="px-2 py-2 hover:bg-gray-100">
-                  &#128269; {s}
-                </li>
+              {suggestion.map((s, index) => (
+                <Link
+                  to={`/search?q=${s}`}
+                  key={index}
+                  // onClick={() => {
+                  //   setSearchQuery(s);
+                  //   setShowSuggestion(false);
+                  //   setSuggestionSearch(null);
+                  // }}
+                >
+                
+                  <li
+                   
+                    className="px-2 py-2 hover:bg-gray-100"
+                  >
+                    &#128269; {s}
+                  </li>
+                </Link>
               ))}
             </ul>
-          
           </div>
         )}
       </div>

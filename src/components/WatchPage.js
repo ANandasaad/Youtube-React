@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
+import { COMMENT_API } from "../utils/constants";
 import Comments from "./Comments";
 import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
+  
   let [searchParams] = useSearchParams();
   const [commentsData, setData]=useState([]);
   console.log(searchParams.get("v"));
@@ -13,9 +15,9 @@ const WatchPage = () => {
 //comment data 
    async function getComment()
   {
-     const response= await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${searchParams.get("v")}&key=AIzaSyCH8rzZ6c7u49qlIcyg4JVpvunKZFKX4L8&maxResults=25`);
+     const response= await fetch(COMMENT_API+searchParams.get("v"));
      const data= await response.json();
-     
+    //  console.log(data);
      setData(data.items);
   }
    
