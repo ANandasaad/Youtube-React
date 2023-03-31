@@ -121,4 +121,4 @@ export const commentsData = [
 
 export const COMMENT_API="https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key="+YOUTUBE_API_KEY+"&maxResults=25&videoId=";
 
-export const VIDEO_LIST="https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&key="+YOUTUBE_API_KEY+"&q=hello";
+export const VIDEO_LIST="https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&key="+YOUTUBE_API_KEY+"&q=";

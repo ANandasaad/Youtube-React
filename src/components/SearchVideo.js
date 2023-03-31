@@ -7,7 +7,7 @@ import VideoList from './VideoList'
 const SearchVideo = () => {
   
   const [Videolist,setVideoList]= useState([]);
-  const [searchParams]= useSearchParams([]);
+  const [searchParams]= useSearchParams();
   console.log(searchParams.get("q"));
   useEffect(()=>{
     getVideList();
@@ -15,7 +15,7 @@ const SearchVideo = () => {
 
   async function getVideList()
   {
-     const response= await fetch(VIDEO_LIST);
+     const response= await fetch(VIDEO_LIST +searchParams);
      const data= await response.json();
     //  console.log(data);
     

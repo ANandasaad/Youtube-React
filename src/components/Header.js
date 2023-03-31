@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
@@ -8,8 +8,9 @@ import store from "../utils/store";
 
 const Header = () => {
   const [searchQuery, setQuery] = useState("");
-  const [suggestion, setSuggestion] = useState([]);
+  const [suggestion, setSuggestion] = useState(null);
   const [showSuggestion, setShowSuggestion] = useState(false);
+ 
 
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
@@ -77,18 +78,18 @@ const Header = () => {
             Search
           </button>
         </div>
-        {showSuggestion && (
+        {showSuggestion &&(
           <div className="fixed left-[268px] right-0 top-[71px] bg-white py-2 px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100">
             <ul>
               {suggestion.map((s, index) => (
                 <Link
-                  to={`/search?q=${s}`}
+                  to={"/search"}
                   key={index}
-                  // onClick={() => {
-                  //   setSearchQuery(s);
-                  //   setShowSuggestion(false);
-                  //   setSuggestionSearch(null);
-                  // }}
+                  onClick={() => {
+                    setQuery(s);
+                    setShowSuggestion(false);
+                    setSuggestion(null);
+                  }}
                 >
                 
                   <li
