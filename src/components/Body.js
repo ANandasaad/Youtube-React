@@ -6,10 +6,14 @@ import SideBar from "./SideBar";
 
 const Body = () => {
   return (
+    <div>
+  <Header/>
+   
     <div className="flex">
-       <Header/>
+     
       <SideBar />
       <Outlet/>
+    </div>
     </div>
   );
 };

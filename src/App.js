@@ -10,6 +10,8 @@ import WatchPage from "./components/WatchPage";
 import SearchVideo from "./components/SearchVideo";
 
 import store from "./utils/store";
+import SubscriptionData from "./components/ChannelDetails/Channel";
+import Channel from "./components/ChannelDetails/Channel";
 
  
 const appRouter =createBrowserRouter([{
@@ -27,6 +29,10 @@ const appRouter =createBrowserRouter([{
      { path:"/search",
         element:<SearchVideo />
           
+     }
+     ,{
+      path:'/channel',
+      element:<Channel/>
      }
   ]
   

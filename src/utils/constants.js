@@ -122,3 +122,5 @@ export const commentsData = [
 export const COMMENT_API="https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key="+YOUTUBE_API_KEY+"&maxResults=25&videoId=";
 
 export const VIDEO_LIST="https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&key="+YOUTUBE_API_KEY+"&q=";
+
+export const SUSCRIBE_DATA_API="https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key="+YOUTUBE_API_KEY;

@@ -70,9 +70,12 @@ const Header = () => {
             type="text"
             className=" w-1/2  px-5 border border-gray-400 p-2 rounded-l-full"
             value={searchQuery}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => 
+              {setShowSuggestion(true);
+              setQuery(e.target.value);}}
+          
             onFocus={() => setShowSuggestion(true)}
-            onBlur={() => setShowSuggestion(false)}
+            // onBlur={() => setShowSuggestion(false)}
           />
           <button className=" border border-gray-400 p-2 rounded-r-full">
             Search
@@ -83,7 +86,7 @@ const Header = () => {
             <ul>
               {suggestion.map((s, index) => (
                 <Link
-                  to={"/search"}
+                  to={"/search?q="+s}
                   key={index}
                   onClick={() => {
                     setQuery(s);
