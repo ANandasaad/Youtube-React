@@ -12,6 +12,8 @@ import SearchVideo from "./components/SearchVideo";
 import store from "./utils/store";
 import SubscriptionData from "./components/ChannelDetails/Channel";
 import Channel from "./components/ChannelDetails/Channel";
+import UseMemo from "./components/UseMemo";
+import UseRef from "./components/UseRef";
 
  
 const appRouter =createBrowserRouter([{
@@ -33,6 +35,11 @@ const appRouter =createBrowserRouter([{
      ,{
       path:'/channel',
       element:<Channel/>
+     }
+     ,{
+      path:'/memo',
+      element: <><UseMemo/> 
+      ,<UseRef/> </>
      }
      
   ]

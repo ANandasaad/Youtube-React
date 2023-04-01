@@ -13,7 +13,7 @@ const RelatedVideoCard = ({data}) => {
      
     
   return (
-    <div className='flex '>
+    <div className='flex hover:scale-110 '>
        
      <div >
         <img  className='px-2 py-3 rounded-3xl ' src={video}/>  
