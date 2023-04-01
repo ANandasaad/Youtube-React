@@ -15,8 +15,8 @@ const VideoList = ({data}) => {
     
   return (
     <div className='flex w-full'>
-     <div className='w-96  shadow-lg rounded-lg  ' >
-        <img  className='px-2 py-3 rounded-lg ' src={video}/>  
+     <div className='w-96   rounded-lg  ' >
+        <img  className='px-2 py-3 rounded-3xl ' src={video}/>  
       </div>
       
       <div  className='w-full'>

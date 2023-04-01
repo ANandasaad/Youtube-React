@@ -46,9 +46,11 @@ const Header = () => {
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
+
   };
+  
   return (
-    <div className="grid grid-flow-col p-5 m-2 shadow-lg ">
+    <div className="grid grid-flow-col p-5 m-2 shadow-md ">
       <div className="flex col-span-1">
         <img
           onClick={() => toggleMenuHandler()}
@@ -77,9 +79,9 @@ const Header = () => {
             onFocus={() => setShowSuggestion(true)}
             // onBlur={() => setShowSuggestion(false)}
           />
-          <button className=" border border-gray-400 p-2 rounded-r-full">
+         <Link to={"/search?q="+searchQuery}>   <button className=" border border-gray-400 p-2 rounded-r-full" onBlur={()=>setShowSuggestion(false)}>
             Search
-          </button>
+          </button></Link> 
         </div>
         {showSuggestion &&(
           <div className="fixed left-[268px] right-0 top-[71px] bg-white py-2 px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100">

@@ -34,6 +34,7 @@ const appRouter =createBrowserRouter([{
       path:'/channel',
       element:<Channel/>
      }
+     
   ]
   
 }])

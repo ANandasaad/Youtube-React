@@ -6,7 +6,7 @@ import Subcriptions from './Subcriptions'
 
 const MenuList = () => {
   return (
-    <div className="shadow-lg p-5 m-2 w-48">
+    <div className=" p-5 m-2 w-48">
       <HeadMenu/>
       <SecondHeadMenu/>
       <Subcriptions/>

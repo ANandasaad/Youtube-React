@@ -5,6 +5,7 @@ import { closeMenu } from "../utils/appSlice";
 import { COMMENT_API } from "../utils/constants";
 import Comments from "./Comments";
 import LiveChat from "./LiveChat";
+import RelatedVideo from "./RelatedVideo";
 
 const WatchPage = () => {
   
@@ -29,23 +30,27 @@ const WatchPage = () => {
   return (
     <div className="flex flex-col w-full">
       <div className="flex">
-    <div className="grid col-span-11  px-4">
+    <div className="grid col-span-11  px-2">
       <iframe
         width="1000"
         height="500"
-        src={"https://www.youtube.com/embed/"+searchParams.get("v")}
+        src={"https://www.youtube.com/embed/"+searchParams.get("v")+"?autoplay=1"}
         title="YouTube video player"
        
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       
       ></iframe>
+      <Comments data={commentsData}/>
     </div>
     <div className="w-full mr-3 ">
-      <LiveChat/>
+      {/* <LiveChat/> */}
+      <RelatedVideo/>
     </div>
     </div>
-    <Comments data={commentsData}/>
+    
+    
+    
     </div>
   );
 };

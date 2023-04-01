@@ -1,15 +1,32 @@
+import { wait } from "@testing-library/user-event/dist/utils";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { YOUTUBE_API } from "../utils/constants";
+import useInfiniteScrolling from "../utils/useInfiniteScrolling";
 import Simmer from "./Simmer";
 import VideoCard, { AdVideoCard } from "./VideoCard";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
+  // const [isFetching,setFetching]=useInfiniteScrolling(fetchData);
+  // const [pageToken,setPageToken]=useState(null);
+  const [searchparam] =useSearchParams();
+     const button=searchparam.get("/");
+     console.log(button);
+  useEffect(()=>{
+    getButtonData();
+  },[button])
+
+async function getButtonData()
+{
+
+}
+
   async function getData() {
     let response = await fetch(YOUTUBE_API);
     let data = await response.json();
     console.log(data);
+   
 
     setVideos(data.items);
   }
@@ -17,6 +34,25 @@ const VideoContainer = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  // async function fetchData()
+  // {
+  //   if(!pageToken)
+  //   {
+  //     setFetching(false);
+  //     return;
+  //   }
+
+  //   const newData=await fetch(YOUTUBE_API);
+  //   const response=await newData.json();
+  //   setVideos((prev)=>[...prev,response?.items])
+  //   setPageToken(response?.nextPageToken);
+  //   setFetching(false);
+
+  // }
+
+
+
 
   return videos?.length === 0 ? (
     <Simmer />
