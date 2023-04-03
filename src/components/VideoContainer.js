@@ -8,48 +8,33 @@ import VideoCard, { AdVideoCard } from "./VideoCard";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
-  // const [isFetching,setFetching]=useInfiniteScrolling(fetchData);
-  // const [pageToken,setPageToken]=useState(null);
-  const [searchparam] =useSearchParams();
-     const button=searchparam.get("/");
-     console.log(button);
-  useEffect(()=>{
-    getButtonData();
-  },[button])
-
-async function getButtonData()
-{
-
-}
+  const [isFetching,setFetching]=useInfiniteScrolling(fetchData);
+  const [pageToken,setPageToken]=useState(null);
+    
 
   async function getData() {
     let response = await fetch(YOUTUBE_API);
     let data = await response.json();
-    console.log(data);
+    console.log(data.items);
    
 
     setVideos(data.items);
   }
-
+   
+  async function fetchData()
+  {
+    const newData= await fetch(YOUTUBE_API);
+    const response= await newData.json();
+    setVideos((prev)=>[...prev,...response.items]);
+    setFetching(false);
+    setPageToken(response?.nextPageToken);
+  }
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     getData();
   }, []);
-
-  // async function fetchData()
-  // {
-  //   if(!pageToken)
-  //   {
-  //     setFetching(false);
-  //     return;
-  //   }
-
-  //   const newData=await fetch(YOUTUBE_API);
-  //   const response=await newData.json();
-  //   setVideos((prev)=>[...prev,response?.items])
-  //   setPageToken(response?.nextPageToken);
-  //   setFetching(false);
-
-  // }
+ 
+ 
 
 
 
@@ -60,8 +45,8 @@ async function getButtonData()
     <>
       <div className="flex flex-wrap">
        {videos[0]&& <AdVideoCard info={videos[34]}/>}
-        {videos.map((video) => (
-          <Link key={video.id}  to={"/watch?v=" + video.id} className="inline-block">
+        {videos.map((video,index) => (
+          <Link key={index}  to={"/watch?v=" + video.id} className="inline-block">
             {" "}
             <VideoCard info={video} />
           </Link>
