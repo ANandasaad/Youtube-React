@@ -23,6 +23,11 @@ const VideoContainer = () => {
    
   async function fetchData()
   {
+    if(!pageToken)
+    {
+       setFetching(false);
+       return;
+    }
     const newData= await fetch(YOUTUBE_API);
     const response= await newData.json();
     setVideos((prev)=>[...prev,...response.items]);

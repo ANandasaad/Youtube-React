@@ -83,7 +83,7 @@ const Header = () => {
             Search
           </button></Link> 
         </div>
-        {showSuggestion &&(
+        {showSuggestion && suggestion.length>=0 &&(
           <div className="absolute left-[40px] right-0 top-[71px] bg-white py-2 px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100">
             <ul>
               {suggestion.map((s, index) => (
