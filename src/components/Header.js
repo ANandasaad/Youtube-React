@@ -48,7 +48,7 @@ const Header = () => {
     dispatch(toggleMenu());
 
   };
-  console.log( "showSuggestion:"+ showSuggestion);
+  console.log( "showSuggestion:"+ suggestion);
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-md ">
       <div className="flex col-span-1">
