@@ -1,7 +1,7 @@
 import RelatedVideo from "../components/RelatedVideo";
 
  export const YOUTUBE_API_KEY="AIzaSyBUQ6-FU9qTceF7nygndFJXoH1dmJ0-u4A";
-export const YOUTUBE_API="https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=48&regionCode=IN&key="+YOUTUBE_API_KEY;
+export const YOUTUBE_API="https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key="+YOUTUBE_API_KEY;
  export const RELATED_VIDEO="https://youtube.googleapis.com/youtube/v3"
 
 export const YOUTUBE_SEARCH_API="http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";

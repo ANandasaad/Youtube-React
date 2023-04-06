@@ -5,12 +5,13 @@ import { YOUTUBE_API } from "../utils/constants";
 import useInfiniteScrolling from "../utils/useInfiniteScrolling";
 import Simmer from "./Simmer";
 import VideoCard, { AdVideoCard } from "./VideoCard";
+import { CHANNEL_API } from "../utils/constants";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [isFetching,setFetching]=useInfiniteScrolling(fetchData);
   const [pageToken,setPageToken]=useState(null);
-    
+      
 
   async function getData() {
     let response = await fetch(YOUTUBE_API);
@@ -25,7 +26,7 @@ const VideoContainer = () => {
   {
     if(!pageToken)
     {
-       setFetching(false);
+      setFetching(false);
        return;
     }
     const newData= await fetch(YOUTUBE_API);

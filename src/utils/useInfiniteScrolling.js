@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 
 const useInfiniteScrolling = (fetchData) => {
   const [isFetching,setFetching]=useState(false);
@@ -20,7 +20,7 @@ const useInfiniteScrolling = (fetchData) => {
 
   function scrolling()
   {
-    if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight)
+    if(document.documentElement.scrollTop+window.innerHeight!==document.documentElement.offsetHeight)
     {
         setFetching(true);
     }
