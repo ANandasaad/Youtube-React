@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { RELATED_VIDEO, YOUTUBE_API_KEY } from "../utils/constants";
 import RelatedVideoCard from "./RelatedVideoCard";
+import { useSelector } from "react-redux";
 
 const RelatedVideo = () => {
   const [searchParams] = useSearchParams();
   const [relatedVideo, setRelatedVideo] = useState([]);
+ 
   console.log(searchParams.get("v"));
   useEffect(() => {
     getRelatedVideo();
@@ -29,7 +31,7 @@ const RelatedVideo = () => {
     setRelatedVideo(videoinfo.items);
   }
   return (
-    <div className="w-full h-[100px]">
+    <div className={" h-[100px]"}>
       {/* {relatedVideo.map((video)=>{ <RelatedVideoCard key={video.id} data={video} />})} */}
      { relatedVideo.map((video)=>  <Link to={"/watch?v="+video.id.videoId}> <RelatedVideoCard data={video}/></Link>)}
     </div>

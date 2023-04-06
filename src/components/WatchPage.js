@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
 import { COMMENT_API } from "../utils/constants";
@@ -11,7 +11,8 @@ const WatchPage = () => {
   
   let [searchParams] = useSearchParams();
   const [commentsData, setData]=useState([]);
-  console.log(searchParams.get("v"));
+  const isMenuOpen= useSelector((store)=>store.app.isMenuOpen);
+  // console.log(searchParams.get("v"));
   const dispatch = useDispatch();
 //comment data 
    async function getComment()
@@ -32,6 +33,7 @@ const WatchPage = () => {
       <div className="flex">
     <div className="grid col-span-11  px-2">
       <iframe
+        className={isMenuOpen  && "w-[800px]"}
         width="1000"
         height="500"
         src={"https://www.youtube.com/embed/"+searchParams.get("v")+"?autoplay=1"}

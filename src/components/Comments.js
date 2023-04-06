@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { BiLike,BiDislike } from "react-icons/bi";
 
-
 import { commentsData } from "../utils/constants";
+import { useSelector } from "react-redux";
 const CommentCard = ({ data }) => {
+
+  const isMenuOpen=useSelector((store)=>store.app.isMenuOpen);
+
   
   return (
-    <div className=" flex m-1  rounded-sm ">
+    <div className={" flex m-1  rounded-sm " +(isMenuOpen && "w-[800px]")}>
       
       <img
         className="h-10 rounded-full my-4 mx-3"

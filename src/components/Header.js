@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
@@ -48,7 +48,7 @@ const Header = () => {
     dispatch(toggleMenu());
 
   };
-  
+  console.log( "showSuggestion:"+ showSuggestion);
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-md ">
       <div className="flex col-span-1">
@@ -86,7 +86,7 @@ const Header = () => {
         {showSuggestion&&(
           <div className="absolute left-[40px] right-0 top-[71px] bg-white py-2 px-2 w-[31rem] shadow-lg rounded-lg border border-gray-100">
             <ul>
-              { suggestion.length>0 &&suggestion.map((s, index) => (
+              {suggestion.map((s, index) => (
                 <Link
                   to={"/search?q="+s}
                   key={index}

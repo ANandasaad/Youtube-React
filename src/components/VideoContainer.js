@@ -6,11 +6,15 @@ import useInfiniteScrolling from "../utils/useInfiniteScrolling";
 import Simmer from "./Simmer";
 import VideoCard, { AdVideoCard } from "./VideoCard";
 import { CHANNEL_API } from "../utils/constants";
+import { useSelector } from "react-redux";
+
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [isFetching,setFetching]=useInfiniteScrolling(fetchData);
   const [pageToken,setPageToken]=useState(null);
+ 
+const isMenuOpen= useSelector((store)=>store.app.isMenuOpen);
       
 
   async function getData() {
@@ -29,6 +33,7 @@ const VideoContainer = () => {
       setFetching(false);
        return;
     }
+    setFetching(true);
     const newData= await fetch(YOUTUBE_API);
     const response= await newData.json();
     setVideos((prev)=>[...prev,...response.items]);
@@ -37,6 +42,9 @@ const VideoContainer = () => {
   }
   useEffect(() => {
     window.scrollTo({ top: 0 });
+    // window.addEventListener('resize',function(){
+    //   console.log(window.innerWidth);
+    // })
     getData();
   }, []);
  
@@ -49,7 +57,7 @@ const VideoContainer = () => {
     <Simmer />
   ) : (
     <>
-      <div className="flex flex-wrap">
+  <div className={"flex flex-wrap"}>
        {videos[0]&& <AdVideoCard info={videos[34]}/>}
         {videos.map((video,index) => (
           <Link key={index}  to={"/watch?v=" + video.id} className="inline-block">

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 const RelatedVideoCard = ({data}) => {
     const video=data?.snippet?.thumbnails?.medium?.url;
@@ -10,13 +11,13 @@ const RelatedVideoCard = ({data}) => {
     const year=date1.getFullYear();
     let diff=2023-Number(year);
 
-     
+    const isMenuOpen=useSelector((store)=>store.app.isMenuOpen);     
     
   return (
     <div className='flex hover:scale-110 '>
        
      <div >
-        <img  className='px-2 py-3 rounded-3xl ' src={video}/>  
+        <img  className={'px-2 py-3 rounded-3xl '+(isMenuOpen && "w-96")} src={video}/>  
       </div>
       
       <div  className='w-full'>
