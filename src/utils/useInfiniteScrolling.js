@@ -20,13 +20,16 @@ const useInfiniteScrolling = (fetchData) => {
 
   function scrolling()
   {
-    if(document.documentElement.scrollTop+window.innerHeight!==document.documentElement.offsetHeight)
+    
+    if(document.documentElement.scrollTop+window.innerHeight>=document.documentElement.scrollHeight)
     {
+      
         setFetching(true);
     }
-
+  //  console.log("Inner Height + ScrollTp:" + document.documentElement.scrollTop+window.innerHeight)
+  //  console.log( "ofFSet Height :"+document.documentElement.scrollHeight)
   }
-
+  
   return [isFetching,setFetching];
 }
 

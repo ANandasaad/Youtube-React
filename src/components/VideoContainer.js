@@ -1,7 +1,7 @@
 import { wait } from "@testing-library/user-event/dist/utils";
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { YOUTUBE_API } from "../utils/constants";
+import { YOUTUBE_API, YOUTUBE_API_KEY } from "../utils/constants";
 import useInfiniteScrolling from "../utils/useInfiniteScrolling";
 import Simmer from "./Simmer";
 import VideoCard, { AdVideoCard } from "./VideoCard";
@@ -21,23 +21,36 @@ const isMenuOpen= useSelector((store)=>store.app.isMenuOpen);
     let response = await fetch(YOUTUBE_API);
     let data = await response.json();
     console.log(data.items);
+    setPageToken(data?.nextPageToken);
    
 
     setVideos(data.items);
   }
    
+  let options={
+   
+      part: "snippet,contentDetails,statistics",
+      chart: "mostPopular",
+      maxResults: 20,
+      regionCode: "IN",
+      key: YOUTUBE_API_KEY
+    
+  }
   async function fetchData()
   {
+    console.log("pageToken" +pageToken)
     if(!pageToken)
     {
+  
       setFetching(false);
        return;
     }
-    setFetching(true);
-    const newData= await fetch(YOUTUBE_API);
+   options={...options,pageToken}
+    const newData= await fetch(`https://youtube.googleapis.com/youtube/v3/videos?`+ new URLSearchParams(options));
     const response= await newData.json();
     setVideos((prev)=>[...prev,...response.items]);
     setFetching(false);
+    console.log(response?.nextPageToken)
     setPageToken(response?.nextPageToken);
   }
   useEffect(() => {

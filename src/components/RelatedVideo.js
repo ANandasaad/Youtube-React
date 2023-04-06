@@ -3,26 +3,29 @@ import { Link, useSearchParams } from "react-router-dom";
 import { RELATED_VIDEO, YOUTUBE_API_KEY } from "../utils/constants";
 import RelatedVideoCard from "./RelatedVideoCard";
 import { useSelector } from "react-redux";
+import useInfiniteScrolling from "../utils/useInfiniteScrolling";
 
 const RelatedVideo = () => {
   const [searchParams] = useSearchParams();
   const [relatedVideo, setRelatedVideo] = useState([]);
  
+
   console.log(searchParams.get("v"));
   useEffect(() => {
     getRelatedVideo();
   }, []);
 
+  const options = {
+    part: "snippet",
+    maxResults: 100,
+    order: "viewCount",
+    region: "IN",
+    relatedToVideoId: searchParams?.get("v"),
+    type: "video",
+    key: YOUTUBE_API_KEY,
+  };
   async function getRelatedVideo() {
-    const options = {
-      part: "snippet",
-      maxResults: 100,
-      order: "viewCount",
-      region: "IN",
-      relatedToVideoId: searchParams?.get("v"),
-      type: "video",
-      key: YOUTUBE_API_KEY,
-    };
+    
     const data = await fetch(
       `${RELATED_VIDEO}/search?` + new URLSearchParams(options)
     );
@@ -30,6 +33,10 @@ const RelatedVideo = () => {
     console.log(videoinfo.items);
     setRelatedVideo(videoinfo.items);
   }
+
+
+   
+
   return (
     <div className={" h-[100px]"}>
       {/* {relatedVideo.map((video)=>{ <RelatedVideoCard key={video.id} data={video} />})} */}
