@@ -25,7 +25,10 @@ const category=useSelector((store)=>store.app.selectCategory);
       chart: "mostPopular",
       maxResults: 48,
       regionCode: "IN",
+      videoCategoryId:videoCategory,
       key: YOUTUBE_API_KEY,
+    
+
      
       
 
@@ -46,6 +49,8 @@ const category=useSelector((store)=>store.app.selectCategory);
       chart: "mostPopular",
       maxResults: 20,
       regionCode: "IN",
+      videoCategoryId:videoCategory,
+
       key: YOUTUBE_API_KEY,
       
   }
@@ -73,7 +78,7 @@ const category=useSelector((store)=>store.app.selectCategory);
     // })
     
     getData();
-  }, []);
+  }, [videoCategory]);
   
   // async function getCategory()
   // {
@@ -107,7 +112,7 @@ const category=useSelector((store)=>store.app.selectCategory);
     
     <>
 
-    <div className={"flex flex-wrap"}>
+    <div className={"flex flex-wrap w-[1239px]"}>
     
        {videos[0]&& <AdVideoCard info={videos[34]}/>}
         { videos.map((video,index) => (

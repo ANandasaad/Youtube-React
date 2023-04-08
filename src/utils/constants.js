@@ -12,113 +12,6 @@ export const LIVE_CHAT_COUNT=40;
 
 
 
-export const commentsData = [
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [
-      {
-        name: "Anand Kuswaha",
-        text: "Lorem ipsum dolor sit amet,consectuor adip",
-        replies: [
-          {
-            name: "Anand Kuswaha",
-            text: "Lorem ipsum dolor sit amet,consectuor adip",
-            replies: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [
-      {
-        name: "Anand Kuswaha",
-        text: "Lorem ipsum dolor sit amet,consectuor adip",
-        replies: [
-          {
-            name: "Anand Kuswaha",
-            text: "Lorem ipsum dolor sit amet,consectuor adip",
-            replies: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [
-      {
-        name: "Anand Kuswaha",
-        text: "Lorem ipsum dolor sit amet,consectuor adip",
-        replies: [
-          {
-            name: "Anand Kuswaha",
-            text: "Lorem ipsum dolor sit amet,consectuor adip",
-            replies: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [
-      {
-        name: "Anand Kuswaha",
-        text: "Lorem ipsum dolor sit amet,consectuor adip",
-        replies: [
-          {
-            name: "Anand Kuswaha",
-            text: "Lorem ipsum dolor sit amet,consectuor adip",
-            replies: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [
-      {
-        name: "Anand Kuswaha",
-        text: "Lorem ipsum dolor sit amet,consectuor adip",
-        replies: [
-          {
-            name: "Anand Kuswaha",
-            text: "Lorem ipsum dolor sit amet,consectuor adip",
-            replies: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [],
-  },
-  {
-    name: "Anand Kuswaha",
-    text: "Lorem ipsum dolor sit amet,consectuor adip",
-    replies: [],
-  },
-];
 
 export const COMMENT_API="https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key="+YOUTUBE_API_KEY+"&maxResults=25&videoId=";
 
@@ -132,54 +25,50 @@ export const CHANNEL_API="https://youtube.googleapis.com/youtube/v3/channels?par
 export const buttons=[
 {
   name:'Gaming',
-  videoCategoryId: "1",
+  videoCategoryId: "20",
 },
 {
   name:'Cars',
   videoCategoryId: "2",
 },
 {
-  name:'Money',
-  videoCategoryId: "3",
+  name:'Film & Animation',
+  videoCategoryId: "1",
 },
 {
-  name:'Computer Science',
-  videoCategoryId: "4",
+  name:'People & Blogs',
+  videoCategoryId: "22",
 },
 {
-  name:'Music',
-  videoCategoryId: "5",
+  name:'Sports',
+  videoCategoryId: "17",
 },
 {
   name:'News',
-  videoCategoryId: "6",
+  videoCategoryId: "25",
 },
 {
-  name:'Lo-fi',
-  videoCategoryId: "7",
+  name:'Entertainment',
+  videoCategoryId: "24",
 },
 {
-  name:'Movies',
-  videoCategoryId: "8",
+  name:'Howto & Style',
+  videoCategoryId: "26",
 },
 {
-  name:'Gadgets',
-  videoCategoryId: "9",
+  name:'Comedy',
+  videoCategoryId: "23",
 },
 {
-  name:'Live',
-  videoCategoryId: "10",
+  name:'Pets & Animals',
+  videoCategoryId: "15",
 },
 {
-  name:'Chill',
-  videoCategoryId: "11",
-},
-{
-  name:'History',
-  videoCategoryId: "12",
-},
-{
-  name:'Javascript',
-  videoCategoryId: "13",
+  name:'Science',
+  videoCategoryId: "28",
 },
 ]
+
+
+
+
