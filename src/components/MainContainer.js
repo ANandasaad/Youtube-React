@@ -1,5 +1,5 @@
 import React from 'react'
-import { button } from '../utils/constants'
+import { buttons } from '../utils/constants'
 import ButtonList from './ButtonList'
 import VideoContainer from './VideoContainer'
 import { useSelector } from "react-redux";
@@ -9,7 +9,7 @@ const MainContainer = () => {
 
   return (
     <div className={"w-full mr-10 " +(!isMenuOpen && "mx-28 w-full")}>
-        <ButtonList button={button}/>
+        <ButtonList button={buttons} />
         <VideoContainer />
     </div>
   )
