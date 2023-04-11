@@ -1,6 +1,6 @@
 import RelatedVideo from "../components/RelatedVideo";
 
- export const YOUTUBE_API_KEY="AIzaSyDiowkEuvldhq8nqjXRD29HxJ4gv9gV75I";
+ export const YOUTUBE_API_KEY="AIzaSyC87EhrKuLEC8wPsV6WfJXAyvCFh8rKVEQ";
 export const YOUTUBE_API="https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key="+YOUTUBE_API_KEY;
 
  export const RELATED_VIDEO="https://youtube.googleapis.com/youtube/v3"

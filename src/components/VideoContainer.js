@@ -7,6 +7,7 @@ import Simmer from "./Simmer";
 import VideoCard, { AdVideoCard } from "./VideoCard";
 import { CHANNEL_API } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
+import ErrorBoundary from "./ErrorBounary/ErrorBounary";
 
 
 const VideoContainer = () => {
@@ -113,7 +114,7 @@ const isMobileMenuOpen=useSelector((store)=>store.app.isMobileMenuOpen);
   ) : (
     
     <>
-
+     <ErrorBoundary>
     <div className={"flex flex-wrap w-[1239px]"}>
     
        {videos[0]&& <AdVideoCard info={videos[34]}/>}
@@ -125,7 +126,7 @@ const isMobileMenuOpen=useSelector((store)=>store.app.isMobileMenuOpen);
         ))}
 
       </div>
-
+      </ErrorBoundary>
     </> 
   );
 };
