@@ -15,11 +15,14 @@ import Channel from "./components/ChannelDetails/Channel";
 import UseMemo from "./components/UseMemo";
 import UseRef from "./components/UseRef";
 import WatchLater from "./components/WatchLater/WatchLater";
+import Error from './components/ErrorPage/Error';
+import SearchError from "./components/ErrorPage/SearchError";
 
  
 const appRouter =createBrowserRouter([{
   path:"/",
   element:  <Body />,
+  errorElement:<Error/>,
   children:[
     {
       path:"/",
@@ -30,7 +33,8 @@ const appRouter =createBrowserRouter([{
       element: <WatchPage/> ,
     },
      { path:"/search",
-        element:<SearchVideo />
+        element:<SearchVideo />,
+       
           
      }
      ,{
