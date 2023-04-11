@@ -57,27 +57,27 @@ const Header = () => {
   };
   console.log( "showSuggestion:"+ suggestion);
   return (
-    <div className="grid grid-flow-col p-5 m-2 shadow-md  ">
-      <div className="flex col-span-1">
+    <div className="grid grid-flow-col p-5 m-2 shadow-md max-sm:flex ">
+      <div className="flex col-span-1 ">
         <img
           onClick={() => toggleMenuHandler()}
-          className="h-10  hover:cursor-pointer"
+          className="h-10  hover:cursor-pointer max-sm:h-6 "
           alt="ham"
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8jHyAgHB0OBQgMAAWlpKQpJSaenZ309PUAAAAIAAD8/Pz5+fna2tqop6dvbW1oZmevrq4tKivFxMQYExRiYGC+vr7Dc4WrAAABB0lEQVR4nO3cS3LCMBAFQGIIIBPbhN/9jxqSyiIsTUnlydB9g1eSNV5MvdUKAAAAAAAAAAAAAAAAXtEwvscwDk3yHabSb2Loy/TRIOHUv8XRH+sHHMrSqR6U+hd1jHSE90P8lHC2/Lc0/0vzMy3WMdynxaFBwu+Jv4uh0cQHAAAAAAAAAIB59jG0ijdcT9sYTtcmK0PncumiuJRz/YD7bbf0ut4f3br+GvQt2PblrXrC3WbpUA/6sXrC/GeY/zvM/5aGmofHZiu0S//M/GoVDwAAAAAAAAAAZsjeuRerN1HL7hPy95fm76DNnzD/Lc3/0rxAJ3v+Xn0AAAAAAAAAAAAAAAD4T74AYhs1O+vt3ioAAAAASUVORK5CYII="
         />
         <a href="/">
           <img
-            className="h-10 mx-2 hover:cursor-pointer"
+            className="h-10 mx-2 hover:cursor-pointer max-sm:w-10 max-sm:h-6"
             alt="youtube"
             src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png"
           />
         </a>
       </div>
-      <div className="col-span-10 px-10 relative">
+      <div className="col-span-10 px-10 relative max-sm:flex max-sm:px-5">
         <div>
           <input
             type="text"
-            className=" w-1/2  px-5 border border-gray-400 p-2 rounded-l-full"
+            className=" w-1/2  px-5 border border-gray-400 p-2 rounded-l-full max-sm:w-20   max-sm:h-10"
             value={searchQuery}
             onChange={(e) => 
               {setShowSuggestion(true);
@@ -86,7 +86,7 @@ const Header = () => {
             onFocus={() => setShowSuggestion(true)}
             // onBlur={() => setShowSuggestion(false)}
           />
-         <Link to={"/search?q="+searchQuery}>   <button className=" border border-gray-400 p-2 rounded-r-full" onBlur={()=>setShowSuggestion(false)}>
+         <Link to={"/search?q="+searchQuery}>   <button className=" border border-gray-400 p-2 rounded-r-full " onBlur={()=>setShowSuggestion(false)}>
             Search
           </button></Link> 
         </div>
