@@ -109,12 +109,10 @@ const isMobileMenuOpen=useSelector((store)=>store.app.isMobileMenuOpen);
 
 
 
-  return videos?.length === 0?(
-    <Simmer />
-  ) : (
+  return videos?.length > 0?(
     
     <>
-     <ErrorBoundary>
+   
     <div className={"flex flex-wrap w-[1239px]"}>
     
        {videos[0]&& <AdVideoCard info={videos[34]}/>}
@@ -126,9 +124,9 @@ const isMobileMenuOpen=useSelector((store)=>store.app.isMobileMenuOpen);
         ))}
 
       </div>
-      </ErrorBoundary>
+     
     </> 
-  );
+  ):( <Simmer />);
 };
 
 export default VideoContainer;
