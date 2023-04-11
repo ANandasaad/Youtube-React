@@ -6,7 +6,7 @@ import useInfiniteScrolling from "../utils/useInfiniteScrolling";
 import Simmer from "./Simmer";
 import VideoCard, { AdVideoCard } from "./VideoCard";
 import { CHANNEL_API } from "../utils/constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const VideoContainer = () => {
@@ -17,7 +17,7 @@ const VideoContainer = () => {
  
 const isMenuOpen= useSelector((store)=>store.app.isMenuOpen);
 const  videoCategory=useSelector((store)=>store.app.videoCategory);  
-const category=useSelector((store)=>store.app.selectCategory);
+const isMobileMenuOpen=useSelector((store)=>store.app.isMobileMenuOpen);
 
   async function getData() {
     let options={
@@ -76,9 +76,11 @@ const category=useSelector((store)=>store.app.selectCategory);
     // window.addEventListener('resize',function(){
     //   console.log(window.innerWidth);
     // })
-    
+   
     getData();
   }, [videoCategory]);
+
+ 
   
   // async function getCategory()
   // {

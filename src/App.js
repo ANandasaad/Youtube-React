@@ -14,6 +14,7 @@ import SubscriptionData from "./components/ChannelDetails/Channel";
 import Channel from "./components/ChannelDetails/Channel";
 import UseMemo from "./components/UseMemo";
 import UseRef from "./components/UseRef";
+import WatchLater from "./components/WatchLater/WatchLater";
 
  
 const appRouter =createBrowserRouter([{
@@ -40,6 +41,9 @@ const appRouter =createBrowserRouter([{
       path:'/memo',
       element: <><UseMemo/> 
       ,<UseRef/> </>
+     },{
+      path:'/watchlater',
+      element:<WatchLater/>
      }
      
   ]

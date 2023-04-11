@@ -9,7 +9,7 @@ const Body = () => {
     <div>
   <Header/>
    
-    <div className="flex">
+    <div className="flex ">
      
       <SideBar />
       <Outlet/>

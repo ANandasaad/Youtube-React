@@ -8,7 +8,7 @@ import useInfiniteScrolling from "../utils/useInfiniteScrolling";
 const RelatedVideo = () => {
   const [searchParams] = useSearchParams();
   const [relatedVideo, setRelatedVideo] = useState([]);
- 
+   const isMenuOpen =useSelector((store)=>store.app.isMenuOpen);
 
   console.log(searchParams.get("v"));
   useEffect(() => {
@@ -38,7 +38,7 @@ const RelatedVideo = () => {
    
 
   return (
-    <div className={" h-[100px]"}>
+    <div className={" h-[100px]" }>
       {/* {relatedVideo.map((video)=>{ <RelatedVideoCard key={video.id} data={video} />})} */}
      { relatedVideo.map((video)=>  <Link to={"/watch?v="+video.id.videoId}> <RelatedVideoCard data={video}/></Link>)}
     </div>

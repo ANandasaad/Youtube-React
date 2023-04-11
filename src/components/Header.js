@@ -5,6 +5,8 @@ import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import store from "../utils/store";
+import { closeMobileMenu } from "../utils/appSlice";
+
 
 const Header = () => {
   const [searchQuery, setQuery] = useState("");
@@ -14,6 +16,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
@@ -28,6 +31,10 @@ const Header = () => {
       clearTimeout(timer);
     };
   }, [searchQuery]);
+
+  useEffect(()=>{
+    dispatch(closeMobileMenu());
+  })
 
   const getSearchSuggestions = async () => {
     console.log("API CAll" + searchQuery);
@@ -50,7 +57,7 @@ const Header = () => {
   };
   console.log( "showSuggestion:"+ suggestion);
   return (
-    <div className="grid grid-flow-col p-5 m-2 shadow-md ">
+    <div className="grid grid-flow-col p-5 m-2 shadow-md  ">
       <div className="flex col-span-1">
         <img
           onClick={() => toggleMenuHandler()}

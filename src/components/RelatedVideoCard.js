@@ -14,10 +14,10 @@ const RelatedVideoCard = ({data}) => {
     const isMenuOpen=useSelector((store)=>store.app.isMenuOpen);     
     
   return (
-    <div className='flex hover:scale-110 '>
+  <div className='flex hover:scale-110 '>
        
      <div >
-        <img  className={'px-2 py-3 rounded-3xl '+(isMenuOpen && "w-96")} src={video}/>  
+        <img  className={'px-2 py-3 rounded-3xl '} src={video}/>  
       </div>
       
       <div  className='w-full'>

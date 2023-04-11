@@ -6,12 +6,14 @@ import { COMMENT_API } from "../utils/constants";
 import Comments from "./Comments";
 import LiveChat from "./LiveChat";
 import RelatedVideo from "./RelatedVideo";
+import { addItem } from "../utils/watchSlice";
 
 const WatchPage = () => {
   
   let [searchParams] = useSearchParams();
   const [commentsData, setData]=useState([]);
   const isMenuOpen= useSelector((store)=>store.app.isMenuOpen);
+
   // console.log(searchParams.get("v"));
   const dispatch = useDispatch();
 //comment data 
@@ -28,12 +30,16 @@ const WatchPage = () => {
     getComment();
     dispatch(closeMenu());
   }, []);
+
+  const handleWatchLater=()=>{
+       dispatch(addItem(searchParams.get("v")));
+  }
   return (
     <div className="flex flex-col w-full">
       <div className="flex">
-    <div className="grid col-span-11  px-2">
+    <div className={"grid col-span-11  px-2"}>
       <iframe
-        className={isMenuOpen  && "w-[800px]"}
+        className={isMenuOpen  && "w-[900px]"}
         width="1000"
         height="500"
         src={"https://www.youtube.com/embed/"+searchParams.get("v")+"?autoplay=1"}
@@ -43,9 +49,12 @@ const WatchPage = () => {
         allowFullScreen
       
       ></iframe>
+      <div className="w-32 ">
+        <button className="font-bold bg-green-400 rounded-md p-2" onClick={()=>handleWatchLater()}>Watch Later</button>
+      </div>
       <Comments data={commentsData}/>
     </div>
-    <div className="w-full mr-3 ">
+    <div className={"w-full  " }>
       {/* <LiveChat/> */}
       <RelatedVideo/>
     </div>
