@@ -57,7 +57,7 @@ const Header = () => {
   };
   console.log( "showSuggestion:"+ suggestion);
   return (
-    <div className="grid grid-flow-col p-5 m-2 shadow-md max-sm:flex ">
+    <div className="grid grid-flow-col p-5 m-2 shadow-md max-sm:flex max-sm:w-[1000px] ">
       <div className="flex col-span-1 ">
         <img
           onClick={() => toggleMenuHandler()}

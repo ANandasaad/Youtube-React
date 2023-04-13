@@ -21,7 +21,7 @@ import SearchError from "./components/ErrorPage/SearchError";
  
 const appRouter =createBrowserRouter([{
   path:"/",
-  element:  <Body />,
+  element:<Body />,
   errorElement:<Error/>,
   children:[
     {

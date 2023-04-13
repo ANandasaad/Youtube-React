@@ -17,8 +17,8 @@ const VideoCard = ({info}) => {
   //    getData();
   // },[]);
   return (
-    <div className="p-2 m-2 w-72 h-80  hover:scale-105">
-      <img className="rounded-3xl" src={thumbnails.medium.url} alt="thumbnails"/>
+    <div className="p-2 m-2 w-72 h-80  hover:scale-105 max-sm:w-96 max-sm:h-96">
+      <img className="rounded-3xl  " src={thumbnails.medium.url} alt="thumbnails"/>
       <ul>
         {/* <li><img src={data?.items?.thumbnails?.default?.url} alt="img"/></li> */}
         <li className="font-bold py-2">{title.substring(0,60)}</li>

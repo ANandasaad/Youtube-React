@@ -113,11 +113,11 @@ const isMobileMenuOpen=useSelector((store)=>store.app.isMobileMenuOpen);
     
     <>
    
-    <div className={"flex flex-wrap w-[1239px]"}>
+    <div className={"flex flex-wrap w-[1239px] max-sm:block max-sm:w-96 max-sm:items-center "}>
     
        {videos[0]&& <AdVideoCard info={videos[34]}/>}
         { videos.map((video,index) => (
-          <Link key={index}  to={"/watch?v=" + video.id} className="inline-block">
+          <Link key={index}  to={"/watch?v=" + video.id} className="inline-block max-sm:block">
             {" "}
             <VideoCard info={video} />
           </Link>
